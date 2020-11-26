@@ -1,18 +1,18 @@
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  forwardRef,
-  useImperativeHandle,
-} from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
-const MapContainer = forwardRef((props, ref) => {
-  const { userLocation, inputValueIp, handleChangeSearchesFlag } = props;
+const MapContainer = (props) => {
+  const {
+    userLocation,
+    inputValueIp,
+    handleChangeSearchesFlag,
+    handleChangeLocationInfo,
+  } = props;
 
   console.log(inputValueIp);
 
+  // eslint-disable-next-line no-unused-vars
   const [map, setMap] = useState(null);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
@@ -38,6 +38,14 @@ const MapContainer = forwardRef((props, ref) => {
         .then(function (response) {
           setLatitude(response.data.latitude);
           setLongitude(response.data.longitude);
+          handleChangeLocationInfo(
+            "userLocationInfo",
+            response.data.ip,
+            response.data.country_name,
+            response.data.city,
+            response.data.latitude,
+            response.data.longitude
+          );
         });
     } else {
       let data = sessionStorage.getItem("search");
@@ -65,12 +73,21 @@ const MapContainer = forwardRef((props, ref) => {
               setNullSearch(false);
               setLatitude(response.data.latitude);
               setLongitude(response.data.longitude);
+              handleChangeLocationInfo(
+                "lastLocationInfo",
+                response.data.ip,
+                response.data.country_name,
+                response.data.city,
+                response.data.latitude,
+                response.data.longitude
+              );
             } else {
               setNullSearch(true);
             }
           });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -92,6 +109,14 @@ const MapContainer = forwardRef((props, ref) => {
               setNullSearch(false);
               setLatitude(response.data.latitude);
               setLongitude(response.data.longitude);
+              handleChangeLocationInfo(
+                "lastLocationInfo",
+                response.data.ip,
+                response.data.country_name,
+                response.data.city,
+                response.data.latitude,
+                response.data.longitude
+              );
 
               if (data === null) {
                 const newObject = [
@@ -123,10 +148,11 @@ const MapContainer = forwardRef((props, ref) => {
           });
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValueIp]);
 
   const containerStyle = {
-    width: "400px",
+    width: "100%",
     height: "400px",
   };
 
@@ -159,6 +185,6 @@ const MapContainer = forwardRef((props, ref) => {
       </LoadScript>
     </>
   );
-});
+};
 
 export default MapContainer;

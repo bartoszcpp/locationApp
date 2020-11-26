@@ -19,7 +19,9 @@ const ListOfAllSearches = (props) => {
 
   if (localData !== undefined && localData !== null) {
     var listOfAllData = localData.map((data, index) => (
-      <p key={index}>{data.ip}</p>
+      <p key={index} className="text-left">
+        {data.ip}
+      </p>
     ));
   }
   return <>{listOfAllData}</>;
