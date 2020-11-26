@@ -31,6 +31,15 @@ span {
 .header {
   padding: 50px 0;
 }
+.logo-container {
+  width: fit-content;
+}
+.header .logo {
+  width: fit-content;
+  font-size: 72px;
+  margin-right: 20px;
+  color: var(--primary-color);
+}
 
 /*--------------list-of-all-serches---------------*/
 .list-of-all-searches-component {
@@ -98,5 +107,12 @@ span {
   .map {
     padding-right: 0;
     border-right: none;
+  }
+}
+
+@media (max-width: 576px) {
+  h1,
+  h2 {
+    font-size: 1.2rem;
   }
 }

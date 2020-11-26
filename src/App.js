@@ -4,6 +4,8 @@ import "./App.css";
 import MapContainer from "./components/MapContainer";
 import SearchContainer from "./components/SearchContainer";
 import ListOfAllSearches from "./components/ListOfAllSearches";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   const [value, setValue] = useState();
@@ -64,16 +66,20 @@ function App() {
     setSearchesFlag(newValue);
   };
 
-  console.log(inputValueIp);
-  console.log(userLocationInfo);
-
   return (
     <div className="App">
       <header>
         <div className="header">
           <div className="container">
-            <h1>Welcome to Location App!</h1>
-            <h2>Try enter the IP address or URL address:</h2>
+            <div className="d-flex logo-container mx-auto">
+              <div class="logo my-auto">
+                <FontAwesomeIcon className="socialIcon" icon={faMapMarkerAlt} />
+              </div>
+              <div className="my-auto">
+                <h1>Welcome to Location App!</h1>
+                <h2>Try enter the IP address or URL address:</h2>
+              </div>
+            </div>
           </div>
         </div>
       </header>

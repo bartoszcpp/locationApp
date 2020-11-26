@@ -10,8 +10,6 @@ const MapContainer = (props) => {
     handleChangeLocationInfo,
   } = props;
 
-  console.log(inputValueIp);
-
   // eslint-disable-next-line no-unused-vars
   const [map, setMap] = useState(null);
   const [latitude, setLatitude] = useState(0);
@@ -54,21 +52,17 @@ const MapContainer = (props) => {
       } else {
         setFirstVisit(false);
         const length = JSON.parse(data).length;
-        //console.log(JSON.parse(data)[length - 1][0].ip);
         let ip = null;
         if (inputValueIp === undefined) {
           ip = JSON.parse(data)[length - 1].ip;
         } else {
           ip = inputValueIp;
         }
-        //console.log(JSON.parse(data)[length - 1]);
-        console.log(JSON.parse(data));
         axios
           .get(
             `http://api.ipstack.com/${ip}?access_key=e80b7c1a09d854f8472a3e8ed0cec739`
           )
           .then(function (response) {
-            console.log(response);
             if (response.data.type !== null) {
               setNullSearch(false);
               setLatitude(response.data.latitude);
@@ -93,8 +87,6 @@ const MapContainer = (props) => {
   useEffect(() => {
     if (!userLocation) {
       let data = sessionStorage.getItem("search");
-      console.log(data);
-      //sessionStorage.clear();
       if (data === null && inputValueIp === undefined) {
         setFirstVisit(true);
       } else if (inputValueIp !== undefined) {
@@ -104,7 +96,6 @@ const MapContainer = (props) => {
             `http://api.ipstack.com/${inputValueIp}?access_key=e80b7c1a09d854f8472a3e8ed0cec739`
           )
           .then(function (response) {
-            console.log(response);
             if (response.data.type !== null) {
               setNullSearch(false);
               setLatitude(response.data.latitude);
@@ -138,7 +129,6 @@ const MapContainer = (props) => {
 
                 const parseObject = JSON.parse(data);
                 parseObject.push(newObject);
-                console.log(parseObject);
                 sessionStorage.setItem("search", JSON.stringify(parseObject));
                 handleChangeSearchesFlag(inputValueIp);
               }
