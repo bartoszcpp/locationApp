@@ -29,9 +29,6 @@ const SearchContainer = (props) => {
 
   return (
     <>
-      {invalidSearch && (
-        <p>Źle wpisany adres IP albo URL, spróbuj jeszcze raz</p>
-      )}
       <input
         type="text"
         className="input-name"
@@ -46,6 +43,7 @@ const SearchContainer = (props) => {
       >
         <FontAwesomeIcon className="socialIcon" icon={faSearch} />
       </button>
+      {invalidSearch && <p>Incorrectly IP or URL address, please try again!</p>}
     </>
   );
 };

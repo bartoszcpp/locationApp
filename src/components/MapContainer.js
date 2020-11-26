@@ -169,8 +169,12 @@ const MapContainer = (props) => {
 
   return (
     <>
-      {firstVisit && <p>Zacznij szukać!</p>}
-      {nullSearch && <p>Nie ma takiego wyniku, wpisz coś innego!</p>}
+      {firstVisit && <p className="text-left">Start exploring...</p>}
+      {nullSearch && (
+        <p className="text-left">
+          There is no such result, please enter something else!
+        </p>
+      )}
       <LoadScript googleMapsApiKey="AIzaSyCX1NxXhcsjNLDrTM5B1HkA1yXDiNn8XJ0">
         <GoogleMap
           mapContainerStyle={containerStyle}

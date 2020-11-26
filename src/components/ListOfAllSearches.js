@@ -24,7 +24,17 @@ const ListOfAllSearches = (props) => {
       </p>
     ));
   }
-  return <>{listOfAllData}</>;
+
+  console.log(listOfAllData);
+  return (
+    <>
+      {listOfAllData !== undefined ? (
+        listOfAllData
+      ) : (
+        <p className="text-left">No result, start searching.</p>
+      )}
+    </>
+  );
 };
 
 export default ListOfAllSearches;

@@ -80,13 +80,7 @@ function App() {
       <main>
         <div className="container">
           <div className="row">
-            <div className="col-md-3">
-              <p className="t-1em5 text-left">List of all searches:</p>
-              <div className="list-of-all-searches-component">
-                <ListOfAllSearches searchesFlag={searchesFlag} />
-              </div>
-            </div>
-            <div className="col-md-9">
+            <div className="col-lg-9 order-lg-2">
               <div className="row map-container">
                 <div className="col-md-8">
                   <div className="map-user-location">
@@ -128,7 +122,9 @@ function App() {
               <div className="row">
                 <div className="col-md-8">
                   <div className="search-container">
-                    <p className="text-left">Search location by IP or URL:</p>
+                    <p className="text-left">
+                      <b>Search location by IP or URL:</b>
+                    </p>
                     <div className="mr-auto search">
                       <SearchContainer
                         value={value}
@@ -176,6 +172,15 @@ function App() {
                     </span>{" "}
                     <br />
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-3 order-lg-1">
+              <div className="list-of-all-searches-container">
+                <p className="t-1em5 text-left">List of all searches:</p>
+                <div className="list-of-all-searches-component">
+                  <ListOfAllSearches searchesFlag={searchesFlag} />
                 </div>
               </div>
             </div>

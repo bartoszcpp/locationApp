@@ -86,3 +86,17 @@ span {
 .footer {
   margin-top: 30px;
 }
+
+/*--------media------*/
+@media (max-width: 992px) {
+  .list-of-all-searches-container {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .map {
+    padding-right: 0;
+    border-right: none;
+  }
+}
